@@ -1,0 +1,11 @@
+# Compiled classes
+*.class
+/bin/
+data/index/*
+data/data.txt
+data/scraped/*
+UI/data/*
+.classpath
+.project
+data/refined_full_new.txt
+web-crawlers/data/*

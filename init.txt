@@ -1,0 +1,46 @@
+javac src/edu/nyu/cs/cs2580/*.java
+javac -classpath jsoup-1.10.1.jar src/edu/nyu/cs/cs2580/*.java
+
+java -cp src edu.nyu.cs.cs2580.SearchEngine --mode=index --options=conf/engine.conf
+java -cp .;jsoup-1.10.1.jar;src -Xmx512m edu.nyu.cs.cs2580.SearchEngine --mode=index --options=conf/engine.conf
+
+
+java -cp .:jsoup-1.10.1.jar:src -Xmx512m edu.nyu.cs.cs2580.SearchEngine --mode=index --options=conf/engine.conf
+
+
+
+
+
+java -cp src -Xmx512m edu.nyu.cs.cs2580.SearchEngine --mode=serve --port=25810 --options=conf/engine.conf
+
+localhost:25810/search?query=web&ranker=cosine&format=text
+
+http://localhost:25810/autosuggest?query=software%20developer&ranker=conjunctive&format=text
+
+java -cp "src;stanford-corenlp-3.7.0.jar;stanford-corenlp-3.7.0-models.jar;json-simple-1.1.1.jar" -Xmx2048m edu.nyu.cs.cs2580.SearchEngine --mode=serve --port=25810 --options=conf/engine.conf
+
+javac -classpath \* src/edu/nyu/cs/cs2580/*.java
+
+
+force gitlab for updates
+
+git fetch --all
+git reset --hard origin/master
+git pull origin master
+
+
+git add .
+git commit -m "Message"
+git push
+
+AIzaSyDw8jrrP1-l4ctHt2PnKT1ohiIpcS_CoRY
+
+
+
+Project
+
+chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
+
+To serve:
+
+java -cp "src;stanford-corenlp-3.7.0.jar;stanford-corenlp-3.7.0-models.jar;json-simple-1.1.1.jar" -Xmx2048m edu.nyu.cs.cs2580.SearchEngine --mode=serve --port=25810 --options=conf/engine.conf

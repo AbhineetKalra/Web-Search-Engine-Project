@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Web Search Engine - Group 10</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.2.0/jquery.rateyo.min.css">
+    <!-- Theme CSS -->
+    <link href="css/grayscale.min.css" rel="stylesheet">
+    <link href="css/search.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+    body{
+    	font-family: Raleway, Helvetica, Arial, sans-serif;
+    }
+    .banner .cnt {
+    color: #fff;}
+    .banner .cnt p {
+    font-size: 110px;
+    line-height: 70px;
+}
+.fw-b {
+    font-weight: 700;
+}.banner .cnt *+h2 {
+    margin-top: 9px;
+}
+h2, .h2 {
+    font-size: 70px;
+    line-height: 1;
+    font-weight: 700;
+}
+h2 small, .h2 small {
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    line-height: 60px;
+    color: #fff;
+}
+
+h3, .h3 {
+    font-size: 30px;
+    line-height: 1.1;
+    color: #1c1c1c;
+    font-weight: normal;
+}
+
+ul.ratings-container li {
+    float: left;
+    margin: 10px 0 20px;
+    width: 200px;
+}
+#search-results-section{padding-top:25px;}
+.results-container li{text-align: left;color: #000;list-style: none;}
+.results-container h2 {
+    font-size: 20px;
+    color: #000;
+    line-height: 22px;
+    margin-bottom: 5px;
+    text-align: left;
+}
+.results-container a{
+    display: inline-block;
+}
+.results-container p {
+    color: #000;
+    font-size: 14px;
+    margin: 10px 0 0;
+}
+.results-container span {
+    font-size: 15px;
+    color: #000;
+    line-height: 17px;
+    margin-bottom: 5px;
+    padding-right: 26px;
+}
+
+.rating.jq-ry-container {
+    margin: 0 auto;
+}
+
+.results-container .rating-label {
+    width: 100%;
+    font-size: 11px;
+    color: #b20000;
+    font-weight: bold;
+    margin: 0 auto;
+    margin-left: 50px;
+    display: inline-block;
+}
+.dropmenu-item-btn {
+  text-align: center;
+}
+.dropdown-menu > li > .dropmenu-item-btn {
+  padding: 10px;
+}
+.dropdown-menu > li > .dropmenu-item-btn:hover,
+.dropdown-menu > li > .dropmenu-item-btn:focus,
+.dropdown-menu > li > .dropmenu-item-btn:active,
+.dropdown-menu > li > .dropmenu-item-btn.active {
+  color: #337ab7;
+}
+ul.dropdown-menu.dropdown-menu--horizontal {
+    margin: 5px 100px;
+}
+.dropmenu-item-btn > .glyphicon {
+  display: block;
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+.open > .dropdown-menu--horizontal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.open > .dropdown-menu--horizontal > li > a {
+  min-width: 80px;
+}
+.open > .dropdown-menu--horizontal > .divider {
+  width: 1px;
+  height: auto;
+  margin: 0 9px;
+}
+
+.dropdown {
+  margin-left: 40px;
+}
+.dropdown-menu {
+  min-width: 80px;
+}
+
+/*
+.sort-preference{width:100%;}
+.sort-preference .btn-primary {
+    color: #000;
+    background-color: #f2f2f2;
+    border-color: #f2f2f2;
+}
+*/
+.spinner {
+  margin: 100px auto;
+  width: 50px;
+  height: 80px;
+  text-align: center;
+  font-size: 10px;
+}
+
+.spinner > div {
+  background-color: #fff;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+  
+  -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+  animation: sk-stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+
+@-webkit-keyframes sk-stretchdelay {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+  20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes sk-stretchdelay {
+  0%, 40%, 100% { 
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }  20% { 
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
+}
+
+    </style>
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="container text-center banner">
+<div class="cnt">
+<p class="fw-b"><span id="max-number">50,000+</span></p>
+<h2 class="wow fadeIn animated" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; animation-name: fadeIn;">Jobs Listed
+<small>in Over 4,000 Companies</small>
+</h2>
+</div>
+<div class="search-form">
+<label class="search-form_label">
+<input class="search-form_input" type="text" autocomplete="off" placeholder="Search Jobs">
+<span class="search-form_liveout">
+</span>
+</label>
+<button class="search-form_submit fa-search" type="submit"></button>
+
+<div class="dropdown open">
+  <h3>Sort Results by :</h3>
+  <ul class="dropdown-menu dropdown-menu--horizontal">
+    <li>
+      <a class="dropmenu-item-btn active" href="javascript:void(0);" data-type="distance">
+        <i class="glyphicon glyphicon-briefcase"></i>
+        Distance
+      </a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a class="dropmenu-item-btn" href="javascript:void(0);" data-type="rating">
+        <i class="glyphicon glyphicon-star"></i>
+        Ratings
+      </a>
+    </li>
+    <li class="divider"></li>
+    <li>
+      <a class="dropmenu-item-btn" href="javascript:void(0);" data-type="time">
+        <i class="glyphicon glyphicon-time"></i>
+        Upload Date
+      </a>
+    </li>
+  </ul>
+</div><!-- /dropdown -->
+
+<div class="spinner hide">
+  <div class="rect1"></div>
+  <div class="rect2"></div>
+  <div class="rect3"></div>
+  <div class="rect4"></div>
+  <div class="rect5"></div>
+</div>
+</div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="scrollTo"></div>
+    <section id="search-results-section" class="container content-section text-center hide">
+        <div class="row">
+        	<h3 class="text-center search-query">Search results for <strong> Events</strong> near <i></i></h3>
+            <ul class="col-lg-12 results-container">
+                
+            </ul>
+        </div>
+    </section>
+
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.2.0/jquery.rateyo.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+    <script id="searchResultTemplate" type="text/x-jQuery-tmpl">
+        <li>
+            
+                <div class="col-lg-2">
+                <img src="${job_company_image}" alt="${job_company_name}" width = "125" height="125"/>
+                </div>
+                <div class="col-lg-10">
+                    <a target="_blank" class="jobUrl" href="javascript:void(0);" data-href="${job_url}">
+                    <h2>${job_title}</h2>
+                    <span class="employer">${job_company_name}</span>
+                    <span class="location">${job_city} ${job_state}</span>
+                    <span class="uploaded-date">${job_posted_date}</span>
+                    <p>${job_description}</p>
+                    </a>
+                    <ul class="ratings-container">
+                        <li><div class="rating" data-value="${job_company_rating_overall}"></div>
+                        <span class="rating-label">Overall Rating</span></li>
+                        <li><div class="rating" data-value="${job_company_rating_opportunity}"></div>
+                        <span class="rating-label">Opportunities Rating</span></li>
+                        <li><div class="rating" data-value="${job_company_rating_benefits}"></div>
+                        <span class="rating-label">Benefits Rating</span></li>
+                        <li><div class="rating" data-value="${job_company_rating_worklife}"></div>
+                        <span class="rating-label">Work Life Balance</span></li>
+                    </ul>
+                </div>
+                
+            
+        </li>
+    </script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
